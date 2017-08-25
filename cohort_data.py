@@ -44,7 +44,22 @@ def sort_by_cohort(filename):
     fall_15 = []
     ghosts = []
 
-    # Code goes here
+    data = open(filename)
+    for line in data:
+        line = line.rstrip()
+        line = line.split("|")
+        if line[-1] == 'Fall 2015':
+            fall_15.append(line[0] + ' ' + line[1])
+        elif line[-1] == 'Spring 2016':
+            spring_16.append(line[0] + ' ' + line[1])
+        elif line[-1] == 'Summer 2016':
+            summer_16.append(line[0] + ' ' + line[1])
+        elif line[-1] == 'Winter 2016':
+            winter_16.append(line[0] + ' ' + line[1])
+        elif line[-1] == 'G':
+            ghosts.append(line[0] + ' ' + line[1])
+
+    all_students[:] = list([fall_15, winter_16, spring_16, summer_16, ghosts])
 
     return all_students
 
